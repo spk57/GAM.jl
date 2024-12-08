@@ -27,5 +27,6 @@ export PartialDependencePlot
 export plotGAM
 export gam
 export summary
-
+export residuals
+export fitted
 end

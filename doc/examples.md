@@ -14,17 +14,25 @@ mod = gam("Volume ~ s(Girth, k=10, degree=3) + s(Height, k=10, degree=3)", df)
 ```
 
 ### Hubble
+Model: </br>
 y ~ x  
-
+#### Load Hubble Dataset
 ```
 hubble=dataset("gamair", "hubble")
+```
+#### Fit with GAM
+```
 hubMod =gam("y ~ x", hubble) 
-hubMod1=gam("y ~ x", hubble[Not([3,15]), :])
-scatter(hubble.x, hubble.y, label="Measured")
-scatter!(hubMod.x, hubMod.Fitted, label="Fitted")
-scatter(hubble.x, hubble.y, label="Measured")
-scatter!(hubMod.x, hubMod.Fitted, label="Fitted")
 GAM.summary(hubMod)
-plot(fitted(hub.mod), residuals(hub.mod), xlab="fitted values", ylab="residuals")
+#Remove outliers
+hubMod1=gam("y ~ x", hubble[Not([3,15]), :])
+GAM.summary(hubMod1)
+```
+#### Plots
+```
+scatter(hubble.x, hubble.y, label="Measured")
+scatter!(hubMod.x, hubMod.Fitted, label="Fitted")
+#Plot fitted data vs residuals
+scatter(hubMod.Fitted, residuals(hubMod), label="", xlab="fitted values", ylab="residuals")
 
 ```

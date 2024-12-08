@@ -46,8 +46,12 @@ mutable struct GAMData
     end
 end
 
-"Print residuals"
-printResiduals(data)=println("Residuals: $data[\n ")
+"Calculate residuals from fitted data"
+residuals(data)=abs.(data.y - data.Fitted)
+
+"Return fitted data to match R function"
+fitted(data)=data.Fitted
+
 "Print summary information of GAMData"
 function summary(data::GAMData, out::IO=stdout)
     println("Summary:")
