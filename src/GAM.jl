@@ -26,5 +26,6 @@ export GAMData
 export PartialDependencePlot
 export plotGAM
 export gam
+export summary
 
 end
