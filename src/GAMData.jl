@@ -51,6 +51,7 @@ printResiduals(data)=println("Residuals: $data[\n ")
 "Print summary information of GAMData"
 function summary(data::GAMData, out::IO=stdout)
     println("Summary:")
+    println("Coef $(data.Coef)")
     println(out, "EDF: $(data.Diagnostics[:EDF])")
     println(out, "GCV: $(data.Diagnostics[:GCV])")
     println(out, "RSS: $(data.Diagnostics[:RSS])")
